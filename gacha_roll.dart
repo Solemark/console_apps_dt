@@ -1,11 +1,16 @@
 import 'dart:math';
 
-String gacha_roll(String game) {
-  String output = "Unknown Game!";
-  if (game == "FGO") output = _play(100, 300, 5, game);
-  if (game == "AK") output = _play(50, 100, 6, game);
-  if (game == "GI") output = _play(60, 90, 5, game);
-  return output;
+String gachaRoll(String game) {
+  switch (game) {
+    case "FGO":
+      return _play(100, 300, 5, game);
+    case "AK":
+      return _play(50, 100, 6, game);
+    case "GI":
+      return _play(60, 90, 5, game);
+    default:
+      return "Unknown game";
+  }
 }
 
 String _play(int rate, int pity, int rarity, String game) {

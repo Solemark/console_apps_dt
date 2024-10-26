@@ -15,12 +15,12 @@ void main() {
   group('test circles', () {
     test('area', () {
       for ((num, num) row in area_data) {
-        expect(row.$1, calc_area(row.$2));
+        expect(row.$1, area(row.$2));
       }
     });
     test('circumference', () {
       for ((num, num) row in circ_data) {
-        expect(row.$1, calc_circ(row.$2));
+        expect(row.$1, circ(row.$2));
       }
     });
   });

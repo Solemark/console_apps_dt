@@ -1,3 +1,3 @@
 import 'dart:math';
 
-int get_roll(int max) => Random().nextInt(max) + 1;
+int getRoll(int max) => Random().nextInt(max) + 1;

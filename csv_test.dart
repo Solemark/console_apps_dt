@@ -13,11 +13,11 @@ void main() {
   ];
 
   setUp(() async {
-    write_csv(filename, data);
+    writeCSV(filename, data);
   });
 
   tearDown(() async {
-    await destroy_csv(filename);
+    await destroyCSV(filename);
   });
 
   group('Test Write to CSV', () {

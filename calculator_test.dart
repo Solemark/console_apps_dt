@@ -16,17 +16,17 @@ void main() {
 
     test('subtraction', () {
       for ((num, num) row in data) {
-        expect(row.$1 - row.$2, subtract(row.$1, row.$2));
+        expect(row.$1 - row.$2, sub(row.$1, row.$2));
       }
     });
     test('multiplication', () {
       for ((num, num) row in data) {
-        expect(row.$1 * row.$2, multiply(row.$1, row.$2));
+        expect(row.$1 * row.$2, mul(row.$1, row.$2));
       }
     });
     test('division', () {
       for ((num, num) row in data) {
-        expect(row.$1 / row.$2, divide(row.$1, row.$2));
+        expect(row.$1 / row.$2, div(row.$1, row.$2));
       }
     });
   });

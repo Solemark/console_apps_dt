@@ -7,7 +7,7 @@ void main() {
   test('Test gacha roll', () {
     List<String> data = getData();
     for (String item in data) {
-      expect(true, gacha_roll(item).contains(item));
+      expect(true, gachaRoll(item).contains(item));
     }
   });
 }
