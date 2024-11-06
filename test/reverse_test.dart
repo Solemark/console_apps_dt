@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'reverse.dart';
+import '../src/reverse.dart';
 
 void main() {
   List<int> input = [];

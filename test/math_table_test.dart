@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'math_table.dart';
+import '../src/math_table.dart';
 
 void main() {
   group("test multiplication tables", () {

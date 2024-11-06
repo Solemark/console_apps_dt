@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'diceroll.dart';
+import '../src/diceroll.dart';
 
 List<int> getData() => [4, 6, 8, 10, 12, 20];
 

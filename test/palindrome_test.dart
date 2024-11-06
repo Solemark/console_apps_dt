@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'palindrome.dart';
+import '../src/palindrome.dart';
 
 void main() {
   group("test if palindrome checks string", () {

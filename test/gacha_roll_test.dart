@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'gacha_roll.dart';
+import '../src/gacha_roll.dart';
 
 List<String> getData() => ['FGO', 'AK', 'GI'];
 

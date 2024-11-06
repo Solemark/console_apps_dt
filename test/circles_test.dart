@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'circles.dart';
+import '../src/circles.dart';
 
 void main() {
   const Iterable<(num, num)> area_data = [

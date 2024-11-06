@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'datetime.dart';
+import '../src/datetime.dart';
 
 void main() {
   test('Test current datetime', () {

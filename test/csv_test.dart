@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:csv/csv.dart';
 import 'package:test/test.dart';
-import 'csv.dart';
+import '../src/csv.dart';
 
 void main() {
   const String filename = "test.csv";

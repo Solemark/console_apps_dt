@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'calculator.dart';
+import '../src/calculator.dart';
 
 void main() {
   const Iterable<(num, num)> data = [
