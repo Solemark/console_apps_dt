@@ -18,7 +18,7 @@ void main() {
         '12 x 10 = 120',
         '12 x 11 = 132',
         '12 x 12 = 144'
-      ], getTable(12, 12));
+      ], MathTable(12, 12).string);
     });
     test("get 12 times table", () {
       expect([
@@ -35,7 +35,7 @@ void main() {
         '1 x 10 = 10',
         '1 x 11 = 11',
         '1 x 12 = 12'
-      ], getTable(1, 12));
+      ], MathTable(1, 12).string);
     });
   });
 }

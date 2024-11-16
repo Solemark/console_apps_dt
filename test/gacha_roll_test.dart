@@ -1,13 +1,13 @@
 import 'package:test/test.dart';
 import '../src/gacha_roll.dart';
 
-List<String> getData() => ['FGO', 'AK', 'GI'];
+final List<Game> data = [Game.fgo, Game.ak, Game.gi];
 
 void main() {
   test('Test gacha roll', () {
-    List<String> data = getData();
-    for (String item in data) {
-      expect(true, gachaRoll(item).contains(item));
+    for (Game item in data) {
+      GachaRoll gr = new GachaRoll(item);
+      expect(true, gr.play().contains(item.name));
     }
   });
 }

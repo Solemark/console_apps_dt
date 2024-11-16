@@ -10,7 +10,7 @@ void main() {
   });
 
   group('Test Reverse', () {
-    test('New Array', () => expect(result, newArray(input)));
-    test('Same Array', () => expect(result, sameArray(input)));
+    test('New Array', () => expect(result, Reverse(input).narr));
+    test('Same Array', () => expect(result, Reverse(input).sarr));
   });
 }

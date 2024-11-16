@@ -3,7 +3,7 @@ import '../src/palindrome.dart';
 
 void main() {
   group("test if palindrome checks string", () {
-    test("is DAD a palindrome", () => expect(true, isPalindrome("DAD")));
-    test("is Dad a palindrome", () => expect(false, isPalindrome("Dad")));
+    test("is DAD a palindrome", () => expect(true, Palindrome("DAD").check));
+    test("is Dad a palindrome", () => expect(false, Palindrome("Dad").check));
   });
 }

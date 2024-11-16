@@ -1,16 +1,20 @@
-List<dynamic> newArray(List<dynamic> input) {
-  List<dynamic> output = [];
-  for (final i in input) {
-    output = [i, ...output];
+class Reverse {
+  List<dynamic> data;
+  Reverse(this.data);
+  List<dynamic> get narr {
+    List<dynamic> output = [];
+    for (final i in this.data) {
+      output = [i, ...output];
+    }
+    return output;
   }
-  return output;
-}
 
-List<dynamic> sameArray(List<dynamic> input) {
-  for (int i = 0, j = input.length - 1; i < j; i++, j--) {
-    final x = input[i], y = input[j];
-    input[i] = y;
-    input[j] = x;
+  List<dynamic> get sarr {
+    for (int i = 0, j = this.data.length - 1; i < j; i++, j--) {
+      final x = this.data[i], y = this.data[j];
+      this.data[i] = y;
+      this.data[j] = x;
+    }
+    return this.data;
   }
-  return input;
 }

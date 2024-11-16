@@ -10,23 +10,27 @@ void main() {
   group('test calculator', () {
     test('addition', () {
       for ((num, num) row in data) {
-        expect(row.$1 + row.$2, add(row.$1, row.$2));
+        Calculator calc = Calculator(row.$1, row.$2);
+        expect(row.$1 + row.$2, calc.add);
       }
     });
 
     test('subtraction', () {
       for ((num, num) row in data) {
-        expect(row.$1 - row.$2, sub(row.$1, row.$2));
+        Calculator calc = Calculator(row.$1, row.$2);
+        expect(row.$1 - row.$2, calc.sub);
       }
     });
     test('multiplication', () {
       for ((num, num) row in data) {
-        expect(row.$1 * row.$2, mul(row.$1, row.$2));
+        Calculator calc = Calculator(row.$1, row.$2);
+        expect(row.$1 * row.$2, calc.mul);
       }
     });
     test('division', () {
       for ((num, num) row in data) {
-        expect(row.$1 / row.$2, div(row.$1, row.$2));
+        Calculator calc = Calculator(row.$1, row.$2);
+        expect(row.$1 / row.$2, calc.div);
       }
     });
   });

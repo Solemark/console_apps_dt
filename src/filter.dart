@@ -1,2 +1,7 @@
-Iterable<num> getEvens(Iterable<num> data) => data.where((element) => element % 2 == 0);
-Iterable<num> getOdds(Iterable<num> data) => data.where((element) => element % 2 != 0);
+class Filter {
+  Iterable<num> data;
+  Filter({required this.data});
+
+  Iterable<num> get even => this.data.where((i) => i % 2 == 0);
+  Iterable<num> get odd => this.data.where((i) => i % 2 != 0);
+}

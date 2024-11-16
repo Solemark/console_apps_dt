@@ -1,22 +1,34 @@
 import 'dart:math';
 
-String gachaRoll(String game) {
-  switch (game) {
-    case "FGO":
-      return _play(100, 300, 5, game);
-    case "AK":
-      return _play(50, 100, 6, game);
-    case "GI":
-      return _play(60, 90, 5, game);
-    default:
-      return "Unknown game";
-  }
-}
+enum Game { fgo, ak, gi }
 
-String _play(int rate, int pity, int rarity, String game) {
-  int rolls = 1;
-  while (true) {
-    if (rolls == pity) return "You hit pity at $rolls rolls for your $rarity in $game";
-    if (Random().nextInt(rate + 1) == rate) return "It took $rolls rolls to get a $rarity in $game";
+class GachaRoll {
+  Game game;
+  late int rate, pity, rarity;
+
+  GachaRoll(this.game) {
+    switch (game) {
+      case Game.fgo:
+        this.rate = 100;
+        this.pity = 300;
+        this.rarity = 5;
+      case Game.ak:
+        this.rate = 50;
+        this.pity = 100;
+        this.rarity = 6;
+      case Game.gi:
+        this.rate = 60;
+        this.pity = 90;
+        this.rarity = 5;
+    }
+  }
+
+  String play() {
+    int rolls = 1;
+    while (true) {
+      if (rolls == this.pity) return "You hit pity at $rolls rolls for your ${this.rarity} in ${this.game.name}";
+      if (Random().nextInt(this.rate + 1) == this.rate)
+        return "It took $rolls rolls to get a ${this.rarity} in ${this.game.name}";
+    }
   }
 }

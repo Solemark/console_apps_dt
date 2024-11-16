@@ -2,6 +2,12 @@ import 'package:test/test.dart';
 import '../src/hello_world.dart';
 
 void main() {
-  test('Test hello world', () => expect('Hello world!', hello_world()));
-  test('Test hello world', () => expect('Hello Test!', hello_world("Test")));
+  test('Test hello world', () {
+    HelloWorld hw = new HelloWorld();
+    expect('Hello world!', hw.greet);
+  });
+  test('Test hello world', () {
+    HelloWorld hw = new HelloWorld("Test");
+    expect('Hello Test!', hw.greet);
+  });
 }

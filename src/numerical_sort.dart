@@ -1,7 +1,10 @@
-List<num> numerical_sort(List<num> data) => data..sort();
-
-Iterable<num> numSort(Iterable<num> data) {
-  List<num> output = data.toList();
-  output.sort();
-  return output;
+class NumericalSort {
+  late Iterable<num> data;
+  NumericalSort(this.data);
+  Iterable<num> get num_sort => this.data.toList()..sort();
+  Iterable<num> get numSort {
+    List<num> out = this.data.toList();
+    out.sort();
+    return out;
+  }
 }
