@@ -1,7 +1,7 @@
 class FizzBuzz {
   int fizz, buzz, max;
   FizzBuzz(this.fizz, this.buzz, this.max);
-  String play() {
+  String get play {
     String output = "";
     for (int i = 1; i < max + 1; i++) {
       if (i % fizz == 0) output += "fizz";

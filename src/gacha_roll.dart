@@ -23,7 +23,7 @@ class GachaRoll {
     }
   }
 
-  String play() {
+  String get play {
     int rolls = 1;
     while (true) {
       if (rolls == this.pity) return "You hit pity at $rolls rolls for your ${this.rarity} in ${this.game.name}";

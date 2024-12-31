@@ -1,4 +1,4 @@
-String current() {
+class Date {
   DateTime date = DateTime.now();
-  return '${date.day}/${date.month}/${date.year}';
+  String get current => "${this.date.day}/${this.date.month}/${this.date.year}";
 }
