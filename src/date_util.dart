@@ -16,22 +16,22 @@ class DateUtil {
   /// Set the value of the [DateTime] object
   void setDateTime(DateTime dt) => this._date = dt;
 
-  /// add a number of days to [DateTime] object
+  /// add [d] days to [DateTime] object
   void addDays(int d) => this._date = this._date.add(Duration(days: d));
 
-  /// subtract a number of days to [DateTime] object
+  /// subtract [d] days to [DateTime] object
   void subDays(int d) => this._date = this._date.subtract(Duration(days: d));
 
-  /// add a number of hours to [DateTime] object
+  /// add [h] hours to [DateTime] object
   void addHours(int h) => this._date = this._date.add(Duration(hours: h));
 
-  /// subtract a number of hours to [DateTime] object
+  /// subtract [h] hours to [DateTime] object
   void subHours(int h) => this._date = this._date.subtract(Duration(hours: h));
 
-  /// add a number of seconds to [DateTime] object
+  /// add [s] seconds to [DateTime] object
   void addSeconds(int s) => this._date = this._date.add(Duration(seconds: s));
 
-  /// subtract a number of seconds to [DateTime] object
+  /// subtract [s] seconds to [DateTime] object
   void subSeconds(int s) => this._date = this._date.subtract(Duration(seconds: s));
 
   /**
@@ -60,18 +60,17 @@ class DateUtil {
         j = i.substring(1);
         i = i[0];
       }
-      output += "${this._getValue(i)}$j";
+      output += "${this.getValue(i)}$j";
     }
     return output;
   }
 
-  /// Parse each component of the string from [formatDate]
   /**
-   * Parse each component of the string from [formatDate]
+   * Parse input char and format [DateTime] component
    * 
-   * throws [Exception] on invalid input
+   * THROW [Exception] on invalid input
    */
-  String _getValue(String i) {
+  String getValue(String i) {
     if (i == "") return "";
     switch (i) {
       case 'd':
@@ -110,7 +109,7 @@ class DateUtil {
    * getWeekDay(6); // Sat
    * getWeekDay(7); // Sun
    * ```
-   * throws [Exception] on invalid input
+   * throw [Exception] on invalid input
    */
   Weekday getWeekDay(int i) {
     switch (i) {
@@ -149,7 +148,7 @@ class DateUtil {
    * getMonth(11); // Nov
    * getMonth(12); // Dec
    * ```
-   * throws [Exception] on invalid input
+   * throw [Exception] on invalid input
    */
   Month getMonth(int i) {
     switch (i) {
