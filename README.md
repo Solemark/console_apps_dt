@@ -2,12 +2,12 @@
 
 run with:
 
-    dart run <file name>.dart
+    dart src/<file name>.dart
 
 run ALL tests:
 
-    dart test .
+    dart test test
     
 run specific test:
 
-    dart test <filename>.dart
+    dart test test/<filename>.dart
