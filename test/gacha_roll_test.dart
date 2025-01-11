@@ -7,7 +7,7 @@ void main() {
   test('Test gacha roll', () {
     for (Game item in data) {
       GachaRoll gr = new GachaRoll(item);
-      expect(true, gr.play.contains(item.name));
+      expect(true, gr.play().contains(item.name));
     }
   });
 }

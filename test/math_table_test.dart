@@ -2,26 +2,13 @@ import 'package:test/test.dart';
 import '../src/math_table.dart';
 
 void main() {
-  group("test multiplication tables", () {
-    test("get 1 times table", () {
-      expect([
-        '12 x 0 = 0',
-        '12 x 1 = 12',
-        '12 x 2 = 24',
-        '12 x 3 = 36',
-        '12 x 4 = 48',
-        '12 x 5 = 60',
-        '12 x 6 = 72',
-        '12 x 7 = 84',
-        '12 x 8 = 96',
-        '12 x 9 = 108',
-        '12 x 10 = 120',
-        '12 x 11 = 132',
-        '12 x 12 = 144'
-      ], MathTable(12, 12).string);
-    });
-    test("get 12 times table", () {
-      expect([
+  late MathTable mt;
+  setUp(() {
+    mt = MathTable(1, 12);
+  });
+  group("test stringify()", () {
+    test("test 1 times table", () {
+      Iterable<String> exp = [
         '1 x 0 = 0',
         '1 x 1 = 1',
         '1 x 2 = 2',
@@ -35,7 +22,38 @@ void main() {
         '1 x 10 = 10',
         '1 x 11 = 11',
         '1 x 12 = 12'
-      ], MathTable(1, 12).string);
+      ];
+      expect(exp, mt.stringify());
+    });
+    test("test 12 times table", () {
+      mt.table = 12;
+      Iterable<String> exp = [
+        '12 x 0 = 0',
+        '12 x 1 = 12',
+        '12 x 2 = 24',
+        '12 x 3 = 36',
+        '12 x 4 = 48',
+        '12 x 5 = 60',
+        '12 x 6 = 72',
+        '12 x 7 = 84',
+        '12 x 8 = 96',
+        '12 x 9 = 108',
+        '12 x 10 = 120',
+        '12 x 11 = 132',
+        '12 x 12 = 144'
+      ];
+      expect(exp, mt.stringify());
+    });
+  });
+  group("test calculate()", () {
+    test("test 1 times table", () {
+      Iterable<num> exp = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+      expect(exp, mt.calculate());
+    });
+    test("test 12 times table", () {
+      mt.table = 12;
+      Iterable<num> exp = [0, 12, 24, 36, 48, 60, 72, 84, 96, 108, 120, 132, 144];
+      expect(exp, mt.calculate());
     });
   });
 }
