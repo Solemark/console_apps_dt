@@ -1,3 +1,7 @@
+enum Weekday { Mon, Tue, Wed, Thu, Fri, Sat, Sun }
+
+enum Month { Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec }
+
 class DateUtil {
   late DateTime _date;
   DateUtil([DateTime? date = null]) {
@@ -68,17 +72,17 @@ class DateUtil {
       case 'd':
         return "${this._date.day}";
       case 'D':
-        return this._getWeekDay(this._date.weekday);
+        return this.getWeekDay(this._date.weekday).name;
       case 'm':
         return "${this._date.month}";
       case 'M':
-        return this._getMonth(this._date.month);
+        return this.getMonth(this._date.month).name;
       case 'y':
         return "${this._date.year.toString().substring(2)}";
       case 'Y':
         return "${this._date.year}";
       case 'h':
-        return this._getHour(this._date.hour);
+        return this.getHour(this._date.hour);
       case 'H':
         return "${this._date.hour}";
       case 'i':
@@ -90,55 +94,82 @@ class DateUtil {
     }
   }
 
-  /// Get week day from [DateTime.weekday]
-  String _getWeekDay(int i) {
+  /**
+   * Get the day of the week from [DateTime.weekday] (1-7)
+   * ``` dart
+   * getWeekDay(1); // Mon
+   * getWeekDay(2); // Tue
+   * getWeekDay(3); // Wed
+   * getWeekDay(4); // Thu
+   * getWeekDay(5); // Fri
+   * getWeekDay(6); // Sat
+   * getWeekDay(7); // Sun
+   * ```
+   */
+  Weekday getWeekDay(int i) {
     switch (i) {
       case 1:
-        return "Mon";
+        return Weekday.Mon;
       case 2:
-        return "Tue";
+        return Weekday.Tue;
       case 3:
-        return "Wed";
+        return Weekday.Wed;
       case 4:
-        return "Thu";
+        return Weekday.Thu;
       case 5:
-        return "Fri";
+        return Weekday.Fri;
       case 6:
-        return "Sat";
+        return Weekday.Sat;
       case 7:
-        return "Sun";
+        return Weekday.Sun;
       default:
         throw Exception("Weekday out of bounds\nexpected 1-8\nrecieved: $i");
     }
   }
 
-  /// Get month for [DateTime.month]
-  String _getMonth(int i) {
+  /**
+   * Get the month of the year from [DateTime.month] (1-12)
+   * ``` dart
+   * getMonth(1); // Jan
+   * getMonth(2); // Feb
+   * getMonth(3); // Mar
+   * getMonth(4); // Apr
+   * getMonth(5); // May
+   * getMonth(6); // Jun
+   * getMonth(7); // Jul
+   * getMonth(8); // Aug
+   * getMonth(9); // Sep
+   * getMonth(10); // Oct
+   * getMonth(11); // Nov
+   * getMonth(12); // Dec
+   * ```
+   */
+  Month getMonth(int i) {
     switch (i) {
       case 1:
-        return "Jan";
+        return Month.Jan;
       case 2:
-        return "Feb";
+        return Month.Feb;
       case 3:
-        return "Mar";
+        return Month.Mar;
       case 4:
-        return "Apr";
+        return Month.Apr;
       case 5:
-        return "May";
+        return Month.May;
       case 6:
-        return "Jun";
+        return Month.Jun;
       case 7:
-        return "Jul";
+        return Month.Jul;
       case 8:
-        return "Aug";
+        return Month.Aug;
       case 9:
-        return "Sep";
+        return Month.Sep;
       case 10:
-        return "Oct";
+        return Month.Oct;
       case 11:
-        return "Nov";
+        return Month.Nov;
       case 12:
-        return "Dec";
+        return Month.Dec;
       default:
         throw Exception("Month out of bounds\nexpected 1-12\nrecieved: $i");
     }
@@ -147,13 +178,13 @@ class DateUtil {
   /**
    * Convert a recieved int [i] representing 24hr time to 12hr time
    * ``` dart
-   * _getHour(0); // 12am
-   * _getHour(10); // 10am
-   * _getHour(12); // 12pm
-   * _getHour(22); // 10pm
+   * getHour(0); // 12am
+   * getHour(10); // 10am
+   * getHour(12); // 12pm
+   * getHour(22); // 10pm
    * ```
    */
-  String _getHour(int i) {
+  String getHour(int i) {
     if (i >= 12) {
       i -= 12;
       if (i == 0) i = 12;
