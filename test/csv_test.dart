@@ -13,11 +13,11 @@ void main() {
   ];
 
   setUp(() {
-    CSV(filename, data).write;
+    CSV(filename, data).write();
   });
 
   tearDown(() {
-    CSV(filename, data).destroy;
+    CSV(filename, data).destroy();
   });
 
   group('Test Write to CSV', () {
@@ -27,7 +27,7 @@ void main() {
         () async => expect(data,
             await File('${filename}').openRead().transform(utf8.decoder).transform(CsvToListConverter()).toList()));
     test("Test file was destroyed", () async {
-      CSV(filename, data).destroy;
+      CSV(filename, data).destroy();
       expect(false, await File("$filename").exists());
     });
   });
