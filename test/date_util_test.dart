@@ -51,23 +51,26 @@ void main() {
     });
     test("Test diffDates", () => expect(TIME, d.diff(dt.add(Duration(days: TIME))).inDays.abs()));
     test("Test formatDate", () {
-      String exp = "20/7/1969T20:18:4, Sun, Jul, 69, 8pm";
-      String res = d.formatDate("%d/%m/%YT%H:%i:%s, %D, %M, %y, %h");
-      expect(exp, res);
+      for ((String, String) data in _testFormatDateDataProvider()) {
+        expect(data.$1, d.formatDate(data.$2));
+      }
     });
     test("Test getHour", () {
-      for ((String, DateTime) data in _testGetHourDataProvider()) {
-        d.setDateTime(data.$2);
-        expect(data.$1, d.formatDate("%h"));
+      for ((String, int) data in _testGetHourDataProvider()) {
+        expect(data.$1, d.getHour(data.$2));
       }
     });
   });
 }
 
 String _getDateTime(DateTime dt) => "${dt.day}/${dt.month}/${dt.year} ${dt.hour}:${dt.minute}:${dt.second}";
-List<(String, DateTime)> _testGetHourDataProvider() => [
-      ("12am", DateTime(2020, 2, 1, 0, 0, 0)),
-      ("10am", DateTime(2020, 2, 1, 10, 0, 0)),
-      ("12pm", DateTime(2020, 2, 1, 12, 0, 0)),
-      ("10pm", DateTime(2020, 2, 1, 22, 0, 0)),
+List<(String, String)> _testFormatDateDataProvider() => [
+      ("20/7/1969 20:18:4", "%d/%m/%Y %H:%i:%s"),
+      ("20/7/1969T20:18:4, Sun, Jul, 69, 8pm", "%d/%m/%YT%H:%i:%s, %D, %M, %y, %h"),
+    ];
+List<(String, int)> _testGetHourDataProvider() => [
+      ("12am", 0),
+      ("10am", 10),
+      ("12pm", 12),
+      ("10pm", 22),
     ];
