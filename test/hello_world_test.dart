@@ -2,12 +2,15 @@ import 'package:test/test.dart';
 import '../src/hello_world.dart';
 
 void main() {
+  late HelloWorld hw;
+  setUp(() {
+    hw = new HelloWorld();
+  });
   test('Test hello world', () {
-    HelloWorld hw = new HelloWorld();
     expect('Hello world!', hw.greet);
   });
   test('Test hello world', () {
-    HelloWorld hw = new HelloWorld("Test");
+    hw.name = "Test";
     expect('Hello Test!', hw.greet);
   });
 }
