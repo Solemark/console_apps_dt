@@ -43,90 +43,131 @@ const List<(String, String)> TEST_GET_VALUE_DP = [
 ];
 const List<String> TEST_GET_VALUE_THROWS_DP = ["hello, world", "S"];
 
+/// format [DateTime] objects for string comparision in tests
+String _getDateTime(DateTime dt) => "${dt.day}/${dt.month}/${dt.year} ${dt.hour}:${dt.minute}:${dt.second}";
+
 void main() {
   setUp(() {
     dt = DateTime(1969, 07, 20, 20, 18, 04);
     d = DateUtil(dt);
   });
 
-  group("Test DateUtil", () {
-    test("Test addDays", () {
-      d.addDays(TIME);
-      dt = dt.add(Duration(days: TIME));
-      expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
-    });
-    test("Test subDays", () {
-      d.subDays(TIME);
-      dt = dt.subtract(Duration(days: TIME));
-      expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
-    });
-    test("Test addHours", () {
-      d.addHours(TIME);
-      dt = dt.add(Duration(hours: TIME));
-      expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
-    });
-    test("Test subHours", () {
-      d.subHours(TIME);
-      dt = dt.subtract(Duration(hours: TIME));
-      expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
-    });
-    test("Test addSeconds", () {
-      d.addSeconds(TIME);
-      dt = dt.add(Duration(seconds: TIME));
-      expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
-    });
-    test("Test subSeconds", () {
-      d.subSeconds(TIME);
-      dt = dt.subtract(Duration(seconds: TIME));
-      expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
-    });
-    test("Test setDate", () {
-      dt = dt.add(Duration(days: TIME));
-      d.setDateTime(dt);
-      expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
-    });
-    test("Test diffDates", () => expect(TIME, d.diff(dt.add(Duration(days: TIME))).inDays.abs()));
-    test("Test formatDate", () {
-      for ((String, String) data in TEST_FORMAT_DATE_DP) {
-        expect(data.$1, d.formatDate(data.$2));
-      }
-    });
-    test("Test getHour", () {
-      for ((String, int) data in TEST_GET_HOUR_DP) {
-        expect(data.$1, d.getHour(data.$2));
-      }
-    });
-    test("Test getMonth", () {
-      // Test success cases
+  testMonth();
+  testDays();
+  testWeekDay();
+  testHours();
+  testSeconds();
+  testDate();
+  testValue();
+}
+
+void testMonth() {
+  group("Test Month", () {
+    test("Success", () {
       for ((Month, int) i in TEST_GET_MONTH_DP) {
         expect(i.$1, d.getMonth(i.$2));
       }
-      // Test Exceptions
+    });
+    test("Exception", () {
       for (int i in TEST_GET_MONTH_THROWS_DP) {
         expect(() => d.getMonth(i), throwsException);
       }
     });
-    test("Test getWeekDay", () {
-      // Test success cases
+  });
+}
+
+void testDays() {
+  group("Test days", () {
+    test("addDays", () {
+      d.addDays(TIME);
+      dt = dt.add(Duration(days: TIME));
+      expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
+    });
+    test("subDays", () {
+      d.subDays(TIME);
+      dt = dt.subtract(Duration(days: TIME));
+      expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
+    });
+  });
+}
+
+void testWeekDay() {
+  group("Test getWeekDay", () {
+    test("Success", () {
       for ((Weekday, int) i in TEST_GET_DAY_DP) {
         expect(i.$1, d.getWeekDay(i.$2));
       }
-      // Test Exceptions
+    });
+    test("Exceptions", () {
       for (int i in TEST_GET_DAY_THROWS_DP) {
         expect(() => d.getWeekDay(i), throwsException);
       }
     });
-    test("Test getValue", () {
-      // Test success cases
+  });
+}
+
+void testHours() {
+  group("Test hours", () {
+    test("addHours", () {
+      d.addHours(TIME);
+      dt = dt.add(Duration(hours: TIME));
+      expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
+    });
+    test("subHours", () {
+      d.subHours(TIME);
+      dt = dt.subtract(Duration(hours: TIME));
+      expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
+    });
+    test("getHour", () {
+      for ((String, int) data in TEST_GET_HOUR_DP) {
+        expect(data.$1, d.getHour(data.$2));
+      }
+    });
+  });
+}
+
+void testSeconds() {
+  group("Test Seconds", () {
+    test("addSeconds", () {
+      d.addSeconds(TIME);
+      dt = dt.add(Duration(seconds: TIME));
+      expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
+    });
+    test("subSeconds", () {
+      d.subSeconds(TIME);
+      dt = dt.subtract(Duration(seconds: TIME));
+      expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
+    });
+  });
+}
+
+void testDate() {
+  group("Test Dates", () {
+    test("setDate", () {
+      dt = dt.add(Duration(days: TIME));
+      d.setDateTime(dt);
+      expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
+    });
+    test("diffDates", () => expect(TIME, d.diff(dt.add(Duration(days: TIME))).inDays.abs()));
+    test("formatDate", () {
+      for ((String, String) data in TEST_FORMAT_DATE_DP) {
+        expect(data.$1, d.formatDate(data.$2));
+      }
+    });
+  });
+}
+
+void testValue() {
+  group("Test getValue", () {
+    test("Success", () {
       for ((String, String) i in TEST_GET_VALUE_DP) {
         expect(i.$1, d.getValue(i.$2));
       }
-      // Test Exceptions
+    });
+    test("Exceptions", () {
       for (String i in TEST_GET_VALUE_THROWS_DP) {
         expect(() => d.getValue(i), throwsException);
       }
     });
   });
 }
-
-String _getDateTime(DateTime dt) => "${dt.day}/${dt.month}/${dt.year} ${dt.hour}:${dt.minute}:${dt.second}";
