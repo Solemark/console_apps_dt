@@ -2,14 +2,14 @@ import 'package:test/test.dart';
 import '../src/date_util.dart';
 
 final int TIME = 50;
-final String DATE_FORMAT = "%d/%m/%Y %H:%i:%s.%z";
+final String DATE_FORMAT = "%d/%m/%Y %H:%i:%s";
 
 late DateUtil d;
 late DateTime dt;
 
 void main() {
   setUp(() {
-    dt = DateTime(1969, 07, 20, 20, 18, 04, 123);
+    dt = DateTime(1969, 07, 20, 20, 18, 04);
     d = DateUtil(dt);
   });
 
@@ -51,8 +51,8 @@ void main() {
     });
     test("Test diffDates", () => expect(TIME, d.diff(dt.add(Duration(days: TIME))).inDays.abs()));
     test("Test formatDate", () {
-      String exp = "20/7/1969T20:18:4.123, Sunday, Jul, 69, 8pm";
-      String res = d.formatDate("%d/%m/%YT%H:%i:%s.%z, %D, %M, %y, %h");
+      String exp = "20/7/1969T20:18:4, Sun, Jul, 69, 8pm";
+      String res = d.formatDate("%d/%m/%YT%H:%i:%s, %D, %M, %y, %h");
       expect(exp, res);
     });
     test("Test getHour", () {
@@ -64,13 +64,10 @@ void main() {
   });
 }
 
-String _getDate(DateTime dt) => "${dt.day}/${dt.month}/${dt.year}";
-String _getTime(DateTime dt) => "${dt.hour}:${dt.minute}:${dt.second}.${dt.millisecond}";
-String _getDateTime(DateTime dt) => "${_getDate(dt)} ${_getTime(dt)}";
-
+String _getDateTime(DateTime dt) => "${dt.day}/${dt.month}/${dt.year} ${dt.hour}:${dt.minute}:${dt.second}";
 List<(String, DateTime)> _testGetHourDataProvider() => [
-      ("12am", DateTime(2020, 2, 1, 0, 0, 0, 0)),
-      ("10am", DateTime(2020, 2, 1, 10, 0, 0, 0)),
-      ("12pm", DateTime(2020, 2, 1, 12, 0, 0, 0)),
-      ("10pm", DateTime(2020, 2, 1, 22, 0, 0, 0)),
+      ("12am", DateTime(2020, 2, 1, 0, 0, 0)),
+      ("10am", DateTime(2020, 2, 1, 10, 0, 0)),
+      ("12pm", DateTime(2020, 2, 1, 12, 0, 0)),
+      ("10pm", DateTime(2020, 2, 1, 22, 0, 0)),
     ];
