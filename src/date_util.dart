@@ -66,6 +66,11 @@ class DateUtil {
   }
 
   /// Parse each component of the string from [formatDate]
+  /**
+   * Parse each component of the string from [formatDate]
+   * 
+   * throws [Exception] on invalid input
+   */
   String _getValue(String i) {
     if (i == "") return "";
     switch (i) {
@@ -105,6 +110,7 @@ class DateUtil {
    * getWeekDay(6); // Sat
    * getWeekDay(7); // Sun
    * ```
+   * throws [Exception] on invalid input
    */
   Weekday getWeekDay(int i) {
     switch (i) {
@@ -143,6 +149,7 @@ class DateUtil {
    * getMonth(11); // Nov
    * getMonth(12); // Dec
    * ```
+   * throws [Exception] on invalid input
    */
   Month getMonth(int i) {
     switch (i) {
