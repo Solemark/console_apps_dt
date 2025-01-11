@@ -6,10 +6,6 @@ class DateUtil {
   /**
    * Diff the current [DateTime] against the previous [DateTime]
    * as current [DateTime] - [dt]
-   * ``` dart
-   * @param [DateTime] dt
-   * @return [Duration]
-   * ```
    */
   Duration diff(DateTime dt) => this._date.difference(dt);
 
@@ -37,9 +33,10 @@ class DateUtil {
   /**
    * Use a magic string to format the date
    * ```dart
-   * DateUtil d = DateUtil(1969, 07, 20, 20, 18, 04, 123); // 20-07-1969 20:18:04.123z
+   * //           (Y, m, d, H, i, s)
+   * DateUtil d = DateUtil(1969, 07, 20, 20, 18, 04);
    * d.formatDate("%d"); // 20 (date)
-   * d.formatDate("%D"); // Monday (day)
+   * d.formatDate("%D"); // Mon (day)
    * d.formatDate("%m"); // 07 (month)
    * d.formatDate("%M"); // Jul (month)
    * d.formatDate("%y"); // 69 (year)
@@ -48,7 +45,6 @@ class DateUtil {
    * d.formatDate("%H"); // 20 (24h)
    * d.formatDate("%i"); // 18 (min)
    * d.formatDate("%s"); // 04 (sec)
-   * d.formatDate("%z"); // 123 (ms)
    * ```
    */
   String formatDate(String f) {
@@ -89,10 +85,8 @@ class DateUtil {
         return "${this._date.minute}";
       case 's':
         return "${this._date.second}";
-      case 'z':
-        return "${this._date.millisecond}";
       default:
-        throw Exception("Invalid value\nExpected: %d, %D, %m, %M, %y, %Y, %h, %H, %i, %s, %z\nRecieved: $i");
+        throw Exception("Invalid value\nExpected: %d, %D, %m, %M, %y, %Y, %h, %H, %i, %s\nRecieved: $i");
     }
   }
 
@@ -100,19 +94,19 @@ class DateUtil {
   String _getWeekDay(int i) {
     switch (i) {
       case 1:
-        return "Monday";
+        return "Mon";
       case 2:
-        return "Tuesday";
+        return "Tue";
       case 3:
-        return "Wednesday";
+        return "Wed";
       case 4:
-        return "Thursday";
+        return "Thu";
       case 5:
-        return "Friday";
+        return "Fri";
       case 6:
-        return "Saturday";
+        return "Sat";
       case 7:
-        return "Sunday";
+        return "Sun";
       default:
         throw Exception("Weekday out of bounds\nexpected 1-8\nrecieved: $i");
     }
