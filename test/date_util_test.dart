@@ -20,14 +20,27 @@ const List<(String, int)> TEST_GET_HOUR_DP = [
   ("12pm", 12),
   ("10pm", 22),
 ];
-const List<(Month, int)> TEST_GET_MONTH_DP = [(Month.Jan, 1), (Month.Apr, 4), (Month.Oct, 10), (Month.Dec, 12)];
-const List<int> TEST_GET_MONTH_THROWS_DP = [0, -13, 150];
+const List<(Month, int)> TEST_GET_MONTH_DP = [
+  (Month.Jan, 1),
+  (Month.Apr, 4),
+  (Month.Oct, 10),
+  (Month.Dec, 12),
+];
+const List<int> TEST_GET_MONTH_THROWS_DP = [
+  0,
+  -13,
+  150,
+];
 const List<(Weekday, int)> TEST_GET_DAY_DP = [
   (Weekday.Mon, 1),
   (Weekday.Fri, 5),
   (Weekday.Sun, 7),
 ];
-const List<int> TEST_GET_DAY_THROWS_DP = [0, -5, 100];
+const List<int> TEST_GET_DAY_THROWS_DP = [
+  0,
+  -5,
+  100,
+];
 const List<(String, String)> TEST_GET_VALUE_DP = [
   ("20", "d"),
   ("Sun", "D"),
@@ -39,9 +52,12 @@ const List<(String, String)> TEST_GET_VALUE_DP = [
   ("20", "H"),
   ("18", "i"),
   ("4", "s"),
-  ("", "")
+  ("", ""),
 ];
-const List<String> TEST_GET_VALUE_THROWS_DP = ["hello, world", "S"];
+const List<String> TEST_GET_VALUE_THROWS_DP = [
+  "hello, world",
+  "S",
+];
 
 /// format [DateTime] objects for string comparision in tests
 String _getDateTime(DateTime dt) => "${dt.day}/${dt.month}/${dt.year} ${dt.hour}:${dt.minute}:${dt.second}";
