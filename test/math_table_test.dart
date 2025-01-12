@@ -1,13 +1,33 @@
 import 'package:test/test.dart';
 import '../src/math_table.dart';
 
-void main() {
-  late MathTable mt;
+late MathTable mt;
+
+Future<void> main() async {
   setUp(() {
     mt = MathTable(1, 12);
   });
+  await testCalculate();
+  await testStringify();
+}
+
+Future<void> testCalculate() async {
+  group("test calculate()", () {
+    test("1x table", () {
+      Iterable<num> exp = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+      expect(exp, mt.calculate());
+    });
+    test("12x table", () async {
+      mt.table = 12;
+      Iterable<num> exp = [0, 12, 24, 36, 48, 60, 72, 84, 96, 108, 120, 132, 144];
+      expect(exp, mt.calculate());
+    });
+  });
+}
+
+Future<void> testStringify() async {
   group("test stringify()", () {
-    test("test 1 times table", () {
+    test("1x table", () async {
       Iterable<String> exp = [
         '1 x 0 = 0',
         '1 x 1 = 1',
@@ -25,7 +45,7 @@ void main() {
       ];
       expect(exp, mt.stringify());
     });
-    test("test 12 times table", () {
+    test("12x table", () async {
       mt.table = 12;
       Iterable<String> exp = [
         '12 x 0 = 0',
@@ -43,17 +63,6 @@ void main() {
         '12 x 12 = 144'
       ];
       expect(exp, mt.stringify());
-    });
-  });
-  group("test calculate()", () {
-    test("test 1 times table", () {
-      Iterable<num> exp = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-      expect(exp, mt.calculate());
-    });
-    test("test 12 times table", () {
-      mt.table = 12;
-      Iterable<num> exp = [0, 12, 24, 36, 48, 60, 72, 84, 96, 108, 120, 132, 144];
-      expect(exp, mt.calculate());
     });
   });
 }

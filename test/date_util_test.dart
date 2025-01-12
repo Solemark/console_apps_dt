@@ -46,29 +46,29 @@ const List<String> TEST_GET_VALUE_THROWS_DP = ["hello, world", "S"];
 /// format [DateTime] objects for string comparision in tests
 String _getDateTime(DateTime dt) => "${dt.day}/${dt.month}/${dt.year} ${dt.hour}:${dt.minute}:${dt.second}";
 
-void main() {
-  setUp(() {
+Future<void> main() async {
+  setUp(() async {
     dt = DateTime(1969, 07, 20, 20, 18, 04);
     d = DateUtil(dt);
   });
 
-  testMonth();
-  testDays();
-  testWeekDay();
-  testHours();
-  testSeconds();
-  testDate();
-  testValue();
+  await testMonth();
+  await testDays();
+  await testWeekDay();
+  await testHours();
+  await testSeconds();
+  await testDate();
+  await testValue();
 }
 
-void testMonth() {
+Future<void> testMonth() async {
   group("Test Month", () {
-    test("Success", () {
+    test("Success", () async {
       for ((Month, int) i in TEST_GET_MONTH_DP) {
         expect(i.$1, d.getMonth(i.$2));
       }
     });
-    test("Exception", () {
+    test("Exception", () async {
       for (int i in TEST_GET_MONTH_THROWS_DP) {
         expect(() => d.getMonth(i), throwsException);
       }
@@ -76,14 +76,14 @@ void testMonth() {
   });
 }
 
-void testDays() {
+Future<void> testDays() async {
   group("Test days", () {
-    test("addDays", () {
+    test("addDays", () async {
       d.addDays(TIME);
       dt = dt.add(Duration(days: TIME));
       expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
     });
-    test("subDays", () {
+    test("subDays", () async {
       d.subDays(TIME);
       dt = dt.subtract(Duration(days: TIME));
       expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
@@ -91,14 +91,14 @@ void testDays() {
   });
 }
 
-void testWeekDay() {
+Future<void> testWeekDay() async {
   group("Test getWeekDay", () {
-    test("Success", () {
+    test("Success", () async {
       for ((Weekday, int) i in TEST_GET_DAY_DP) {
         expect(i.$1, d.getWeekDay(i.$2));
       }
     });
-    test("Exceptions", () {
+    test("Exceptions", () async {
       for (int i in TEST_GET_DAY_THROWS_DP) {
         expect(() => d.getWeekDay(i), throwsException);
       }
@@ -106,19 +106,19 @@ void testWeekDay() {
   });
 }
 
-void testHours() {
+Future<void> testHours() async {
   group("Test hours", () {
-    test("addHours", () {
+    test("addHours", () async {
       d.addHours(TIME);
       dt = dt.add(Duration(hours: TIME));
       expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
     });
-    test("subHours", () {
+    test("subHours", () async {
       d.subHours(TIME);
       dt = dt.subtract(Duration(hours: TIME));
       expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
     });
-    test("getHour", () {
+    test("getHour", () async {
       for ((String, int) data in TEST_GET_HOUR_DP) {
         expect(data.$1, d.getHour(data.$2));
       }
@@ -126,14 +126,14 @@ void testHours() {
   });
 }
 
-void testSeconds() {
+Future<void> testSeconds() async {
   group("Test Seconds", () {
-    test("addSeconds", () {
+    test("addSeconds", () async {
       d.addSeconds(TIME);
       dt = dt.add(Duration(seconds: TIME));
       expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
     });
-    test("subSeconds", () {
+    test("subSeconds", () async {
       d.subSeconds(TIME);
       dt = dt.subtract(Duration(seconds: TIME));
       expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
@@ -141,15 +141,15 @@ void testSeconds() {
   });
 }
 
-void testDate() {
+Future<void> testDate() async {
   group("Test Dates", () {
-    test("setDate", () {
+    test("setDate", () async {
       dt = dt.add(Duration(days: TIME));
       d.setDateTime(dt);
       expect(_getDateTime(dt), d.formatDate(DATE_FORMAT));
     });
-    test("diffDates", () => expect(TIME, d.diff(dt.add(Duration(days: TIME))).inDays.abs()));
-    test("formatDate", () {
+    test("diffDates", () async => expect(TIME, d.diff(dt.add(Duration(days: TIME))).inDays.abs()));
+    test("formatDate", () async {
       for ((String, String) data in TEST_FORMAT_DATE_DP) {
         expect(data.$1, d.formatDate(data.$2));
       }
@@ -157,14 +157,14 @@ void testDate() {
   });
 }
 
-void testValue() {
+Future<void> testValue() async {
   group("Test getValue", () {
-    test("Success", () {
+    test("Success", () async {
       for ((String, String) i in TEST_GET_VALUE_DP) {
         expect(i.$1, d.getValue(i.$2));
       }
     });
-    test("Exceptions", () {
+    test("Exceptions", () async {
       for (String i in TEST_GET_VALUE_THROWS_DP) {
         expect(() => d.getValue(i), throwsException);
       }
