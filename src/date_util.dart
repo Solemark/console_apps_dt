@@ -37,8 +37,7 @@ class DateUtil {
   /**
    * Use a magic string to format the date
    * ```dart
-   * //           (Y, m, d, H, i, s)
-   * DateUtil d = DateUtil(1969, 07, 20, 20, 18, 04);
+   * DateUtil d = DateUtil(1969, 07, 20, 20, 18, 04); // (Y, m, d, H, i, s)
    * d.formatDate("%d"); // 20 (date)
    * d.formatDate("%D"); // Mon (day)
    * d.formatDate("%m"); // 07 (month)
