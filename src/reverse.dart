@@ -1,20 +1,31 @@
 class Reverse {
-  List<dynamic> data;
-  Reverse(this.data);
-  List<dynamic> narr() {
+  List<dynamic> newArray(List<dynamic> data) {
     List<dynamic> output = [];
-    for (final i in this.data) {
+    for (final i in data) {
       output = [i, ...output];
     }
     return output;
   }
 
-  List<dynamic> sarr() {
-    for (int i = 0, j = this.data.length - 1; i < j; i++, j--) {
-      final x = this.data[i], y = this.data[j];
-      this.data[i] = y;
-      this.data[j] = x;
+  List<dynamic> sameArray(List<dynamic> data) {
+    for (int i = 0, j = data.length - 1; i < j; i++, j--) {
+      final x = data[i], y = data[j];
+      data[i] = y;
+      data[j] = x;
     }
-    return this.data;
+    return data;
+  }
+
+  String newString(String data) {
+    String output = "";
+    for (int i = 0; i < data.length; i++) {
+      output = data[i] + output;
+    }
+    return output;
+  }
+
+  num newNumber(num data) {
+    String output = this.newString(data.toString());
+    return num.parse(output);
   }
 }
